@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.9
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
 
@@ -14,7 +14,7 @@ Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %ifarch %ix86 ppc
-BuildRequires: kernel-legacy-2.6.17.13mdv
+BuildRequires: kernel-legacy-2.6.21.2mdv
 %endif
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
@@ -24,7 +24,7 @@ BuildRequires: syslinux
 %ifarch ppc
 BuildRequires: yaboot
 %endif
-BuildRequires: drakx-installer-binaries >= 1.7
+BuildRequires: drakx-installer-binaries >= 1.9
 BuildRequires: mandriva-theme
 BuildRequires: pcmciautils
 BuildRequires: perl-XML-Parser
