@@ -1,7 +1,8 @@
 %define name drakx-installer-images
-%define version 1.9
-%define release %mkrel 2
+%define version 1.10
+%define release %mkrel 1
 
+%define theme Free
 %define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
 
 Summary: DrakX installer images
@@ -25,7 +26,7 @@ BuildRequires: syslinux
 BuildRequires: yaboot
 %endif
 BuildRequires: drakx-installer-binaries >= 1.9
-BuildRequires: mandriva-theme
+BuildRequires: mandriva-theme-%{theme}
 BuildRequires: pcmciautils
 BuildRequires: perl-XML-Parser
 
@@ -44,7 +45,7 @@ images needed to build Mandriva installer (DrakX)
 %setup -q
 
 %build
-make -C images
+THEME=Mandriva-%{theme} make -C images
 
 %install
 rm -rf $RPM_BUILD_ROOT
