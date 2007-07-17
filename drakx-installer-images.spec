@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.11
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define theme Free
 %define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
@@ -25,7 +25,7 @@ BuildRequires: syslinux
 %ifarch ppc
 BuildRequires: yaboot
 %endif
-BuildRequires: drakx-installer-binaries >= 1.9
+BuildRequires: drakx-installer-binaries >= 1.10.1
 BuildRequires: mandriva-theme-%{theme}
 BuildRequires: pcmciautils
 BuildRequires: perl-XML-Parser
