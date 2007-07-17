@@ -1,6 +1,6 @@
 %define name drakx-installer-images
-%define version 1.11
-%define release %mkrel 3
+%define version 1.12
+%define release %mkrel 1
 
 %define theme Free
 %define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
