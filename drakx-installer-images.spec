@@ -20,7 +20,7 @@ BuildRequires: kernel-legacy-2.6.22.3mdv
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
 BuildRequires: grub
-BuildRequires: syslinux
+BuildRequires: syslinux >= 3.51-4mdv2008.0
 %endif
 %ifarch ppc
 BuildRequires: yaboot
