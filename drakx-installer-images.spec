@@ -1,6 +1,6 @@
 %define name drakx-installer-images
-%define version 1.12
-%define release %mkrel 2
+%define version 1.13
+%define release %mkrel 1
 
 %define theme Free
 %define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
@@ -15,7 +15,7 @@ Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %ifarch %ix86 ppc
-BuildRequires: kernel-legacy-2.6.22.2mdv
+BuildRequires: kernel-legacy-2.6.22.3mdv
 %endif
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
