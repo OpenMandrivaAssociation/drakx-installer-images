@@ -1,8 +1,15 @@
 %define name drakx-installer-images
-%define version 1.13
-%define release %mkrel 3
-
+%define version 1.14
+%define release %mkrel 1
 %define theme Free
+%define main_kernel_version 2.6.22.4mdv
+
+%ifarch %ix86 ppc
+%define kernels kernel-legacy-%main_kernel_version
+%else
+%define kernels kernel-%main_kernel_version
+%endif
+
 %define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
 
 Summary: DrakX installer images
@@ -14,9 +21,7 @@ License: GPL
 Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-%ifarch %ix86 ppc
-BuildRequires: kernel-legacy-2.6.22.4mdv
-%endif
+BuildRequires: %kernels
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
 BuildRequires: grub
@@ -45,7 +50,7 @@ images needed to build Mandriva installer (DrakX)
 %setup -q
 
 %build
-THEME=Mandriva-%{theme} make -C images
+THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
