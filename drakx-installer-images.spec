@@ -10,8 +10,6 @@
 %define kernels kernel-%main_kernel_version
 %endif
 
-%define mandriva_version %(rpm -q --queryformat '%{VERSION}-%{RELEASE}' mandriva-release)
-
 Summary: DrakX installer images
 Name: %{name}
 Version: %{version}
@@ -39,9 +37,6 @@ BuildRequires: cdrkit-genisoimage
 BuildRequires: mkdosfs-with-dir
 BuildRequires: mknod-m600
 BuildRequires: mtools
-
-#- require the version used during build
-Requires: mandriva-release = %mandriva_version
 
 %description
 images needed to build Mandriva installer (DrakX)
