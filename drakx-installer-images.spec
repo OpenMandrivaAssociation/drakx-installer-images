@@ -28,7 +28,7 @@ BuildRequires: syslinux >= 3.51-4mdv2008.0
 %ifarch ppc
 BuildRequires: yaboot
 %endif
-BuildRequires: drakx-installer-binaries >= 1.13
+BuildRequires: drakx-installer-binaries >= 1.14
 BuildRequires: mandriva-theme-%{theme}
 BuildRequires: pcmciautils
 BuildRequires: perl-XML-Parser
