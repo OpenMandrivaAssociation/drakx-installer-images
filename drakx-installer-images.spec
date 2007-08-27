@@ -2,12 +2,16 @@
 %define version 1.19
 %define release %mkrel 1
 %define theme Free
-%define main_kernel_version 2.6.22.6mdv
+%define main_kernel_version 2.6.22.3-1mdv
 
-%ifarch %ix86 ppc
+%ifarch %ix86
+%define kernels kernel-desktop586-%main_kernel_version
+%else
+%ifarch ppc
 %define kernels kernel-legacy-%main_kernel_version
 %else
-%define kernels kernel-%main_kernel_version
+%define kernels kernel-desktop-%main_kernel_version
+%endif
 %endif
 
 Summary: DrakX installer images
