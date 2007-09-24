@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.23
-%define release %mkrel 3
+%define release %mkrel 4
 %define theme Free
 %define main_kernel_version 2.6.22.6-3mdv
 
@@ -32,7 +32,7 @@ BuildRequires: syslinux >= 3.51-4mdv2008.0
 %ifarch ppc
 BuildRequires: yaboot
 %endif
-BuildRequires: drakx-installer-binaries >= 1.14
+BuildRequires: drakx-installer-binaries >= 1.17
 BuildRequires: mandriva-theme-%{theme}
 BuildRequires: pcmciautils
 BuildRequires: perl-XML-Parser
