@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.24
-%define release %mkrel 1
+%define release %mkrel 2
 %define theme Free
 %define main_kernel_version 2.6.22.9-1mdv
 
@@ -42,6 +42,7 @@ BuildRequires: cdrkit-genisoimage
 BuildRequires: mkdosfs-with-dir
 BuildRequires: mknod-m600
 BuildRequires: mtools
+Buildrequires: busybox
 
 %description
 images needed to build Mandriva installer (DrakX)
