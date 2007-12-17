@@ -22,7 +22,6 @@ Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: %kernels
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
