@@ -1,8 +1,8 @@
 %define name drakx-installer-images
 %define version 1.26
-%define release %mkrel 2
+%define release %mkrel 3
 %define theme Free
-%define main_kernel_version 2.6.24-0.rc7.1mdv
+%define main_kernel_version 2.6.24-0.rc8.2mdv
 
 %ifarch %ix86
 %define kernels kernel-desktop586-%main_kernel_version
