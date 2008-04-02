@@ -5,12 +5,12 @@
 %define main_kernel_version 2.6.24.4-1mnb
 
 %ifarch %ix86
-%define kernels kernel-desktop586-%main_kernel_version
+%define kernels kernel-desktop586-%main_kernel_version kernel-server-%main_kernel_version
 %else
 %ifarch ppc
 %define kernels kernel-legacy-%main_kernel_version
 %else
-%define kernels kernel-desktop-%main_kernel_version
+%define kernels kernel-desktop-%main_kernel_version kernel-server-%main_kernel_version
 %endif
 %endif
 
