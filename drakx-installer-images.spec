@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.31
-%define release %mkrel 9
+%define release %mkrel 10
 %define theme Free
 %define main_kernel_version 2.6.27.6-1mnb
 
