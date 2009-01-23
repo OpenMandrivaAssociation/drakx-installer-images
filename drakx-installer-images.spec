@@ -1,6 +1,6 @@
 %define name drakx-installer-images
-%define version 1.32
-%define release %mkrel 2
+%define version 1.33
+%define release %mkrel 1
 %define theme Free
 %define main_kernel_version 2.6.28-3mnb
 
@@ -27,7 +27,7 @@ BuildRequires: %kernels
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
 BuildRequires: grub
-BuildRequires: syslinux >= 3.51-4mdv2008.0
+BuildRequires: syslinux >= 3.72
 %endif
 %ifarch ppc
 BuildRequires: yaboot
