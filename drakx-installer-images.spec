@@ -2,7 +2,7 @@
 %define version 1.41
 %define release %mkrel 19
 %define theme Free
-%define main_kernel_version 2.6.31-0.rc6.1mnb
+%define main_kernel_version 2.6.31-0.rc8.1mnb
 
 %ifarch %ix86
 %define kernels kernel-desktop586-%main_kernel_version kernel-server-%main_kernel_version
