@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.42
-%define release %mkrel 1
+%define release %mkrel 2
 %define theme Free
 %define main_kernel_version 2.6.31-0.rc9.1mnb
 
@@ -19,6 +19,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: %{name}-%{version}.tar.bz2
+Patch0:	firmware.patch
 License: GPL
 Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
@@ -53,7 +54,7 @@ images needed to build Mandriva installer (DrakX)
 
 %prep
 %setup -q
-
+%patch0 -p0
 %build
 THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
 
