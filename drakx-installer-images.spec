@@ -1,6 +1,6 @@
 %define name drakx-installer-images
-%define version 1.43
-%define release %mkrel 4
+%define version 1.44
+%define release %mkrel 1
 %define theme Free
 %define main_kernel_version 2.6.31.2-0.rc1.1mnb
 
@@ -24,6 +24,7 @@ Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: %kernels kernel-firmware
+BuildRequires: plymouth-theme-mdv
 %ifarch %ix86 x86_64
 BuildRequires: memtest86+
 BuildRequires: grub
