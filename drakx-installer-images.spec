@@ -1,6 +1,6 @@
 %define name drakx-installer-images
-%define version 1.46
-%define release %mkrel 8
+%define version 1.47
+%define release %mkrel 1
 %define theme Free
 %define main_kernel_version 2.6.32.2-2mnb
 
@@ -42,7 +42,7 @@ BuildRequires: cdrkit-genisoimage
 BuildRequires: mkdosfs-with-dir
 BuildRequires: mknod-m600
 BuildRequires: mtools
-Buildrequires: busybox
+Buildrequires: busybox-static
 Buildrequires: ka-deploy-source-node
 
 %description
