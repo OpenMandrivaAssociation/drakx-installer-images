@@ -19,6 +19,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: %{name}-%{version}.tar.bz2
+Patch0:	 images-make_boot_img.patch
 License: GPL
 Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
@@ -50,6 +51,7 @@ images needed to build Mandriva installer (DrakX)
 
 %prep
 %setup -q
+%patch0 -p2
 
 %build
 THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
