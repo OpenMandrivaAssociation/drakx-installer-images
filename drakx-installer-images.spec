@@ -2,7 +2,7 @@
 %define version 1.49
 %define release %mkrel 8
 %define theme Free
-%define main_kernel_version 2.6.35.4-1mnb
+%define main_kernel_version 2.6.35.6-1mnb
 
 %ifarch %ix86
 %define kernels kernel-desktop586-%main_kernel_version kernel-server-%main_kernel_version
