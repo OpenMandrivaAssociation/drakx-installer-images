@@ -1,6 +1,6 @@
 %define name drakx-installer-images
 %define version 1.50
-%define release %mkrel 14
+%define release %mkrel 15
 %define theme Free
 %define main_kernel_version 2.6.38.2-1mnb
 
@@ -20,6 +20,7 @@ Version: %{version}
 Release: %{release}
 Source0: %{name}-%{version}.tar.bz2
 Patch0:  %{name}-use-mtools-for-images.patch
+Patch1:	 %{name}-update-list_modules.patch
 License: GPL
 Group: Development/Other
 Url: http://wiki.mandriva.com/Tools/DrakX
@@ -51,6 +52,7 @@ images needed to build Mandriva installer (DrakX)
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
