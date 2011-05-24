@@ -1,8 +1,5 @@
-%define name drakx-installer-images
-%define version 1.51
-%define release %mkrel 10
 %define theme Free
-%define main_kernel_version 2.6.38.6-1mnb2
+%define main_kernel_version 2.6.38.7-1mnb2
 
 %ifarch %ix86
 %define kernels kernel-desktop586-%main_kernel_version kernel-server-%main_kernel_version
@@ -15,9 +12,9 @@
 %endif
 
 Summary: DrakX installer images
-Name: %{name}
-Version: %{version}
-Release: %{release}
+Name: drakx-installer-images
+Version: 1.52
+Release: 1
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: Development/Other
