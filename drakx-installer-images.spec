@@ -1,5 +1,5 @@
 %define theme Free
-%define main_kernel_version 3.1.4-1
+%define main_kernel_version 3.1.4-1.1
 
 %ifarch %ix86
 %define kernels kernel-generic-%main_kernel_version kernel-server-%main_kernel_version
