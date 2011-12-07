@@ -1,8 +1,8 @@
 %define theme Free
-%define main_kernel_version 2.6.38.7-1mnb2
+%define main_kernel_version 3.1.4-1
 
 %ifarch %ix86
-%define kernels kernel-desktop586-%main_kernel_version kernel-server-%main_kernel_version
+%define kernels kernel-generic-%main_kernel_version kernel-server-%main_kernel_version
 %else
 %ifarch ppc
 %define kernels kernel-legacy-%main_kernel_version
@@ -13,7 +13,7 @@
 
 Summary: DrakX installer images
 Name: drakx-installer-images
-Version: 1.52
+Version: 1.53
 Release: 1
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
