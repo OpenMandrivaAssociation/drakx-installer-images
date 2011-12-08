@@ -14,7 +14,7 @@
 Summary: DrakX installer images
 Name: drakx-installer-images
 Version: 1.53
-Release: 1
+Release: 2
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: Development/Other
