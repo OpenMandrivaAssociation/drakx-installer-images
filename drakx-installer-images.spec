@@ -40,6 +40,8 @@ BuildRequires: mknod-m600
 BuildRequires: mtools dosfstools
 Buildrequires: busybox-static
 Buildrequires: ka-deploy-source-node
+BuildRequires:	rp-pppoe ppp
+BuildRequires:	zd1211-firmware
 
 %description
 images needed to build Mandriva installer (DrakX)
