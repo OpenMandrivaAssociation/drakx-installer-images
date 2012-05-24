@@ -40,7 +40,7 @@ BuildRequires: mknod-m600
 BuildRequires: mtools dosfstools
 Buildrequires: busybox-static
 Buildrequires: ka-deploy-source-node
-BuildRequires:	uclibc-rp-pppoe uclibc-pppd
+BuildRequires:	uclibc-pppoe uclibc-pppd
 BuildRequires:	zd1211-firmware
 
 %description
