@@ -1,7 +1,7 @@
 %define	theme	Free
 
 %ifarch %{ix86}
-%define kernels kernel-generic kernel-server
+%define kernels kernel-desktop kernel-generic
 %else
 %ifarch ppc
 %define kernels kernel-legacy
