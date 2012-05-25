@@ -1,22 +1,20 @@
 %define	theme	Free
-%define	server_kernel_version 3.4.0-1.1
-%define	main_kernel_version 3.4.0-2.1
 
-%ifarch %ix86
-%define kernels kernel-generic = %{main_kernel_version} kernel-server = %{server_kernel_version}
+%ifarch %{ix86}
+%define kernels kernel-generic kernel-server
 %else
 %ifarch ppc
-%define kernels kernel-legacy = %{main_kernel_version}
+%define kernels kernel-legacy
 %else
-%define kernels kernel-desktop = %{main_kernel_version} kernel-server = %{server_kernel_version}
+%define kernels kernel-desktop kernel-server
 %endif
 %endif
 
 Summary:	DrakX installer images
 Name:		drakx-installer-images
-Version:	1.53
-Release:	3
-Source0:	%{name}-%{version}.tar.bz2
+Version:	1.54
+Release:	1
+Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://wiki.mandriva.com/Tools/DrakX
