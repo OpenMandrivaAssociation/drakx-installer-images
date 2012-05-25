@@ -10,6 +10,9 @@
 %endif
 %endif
 
+%define _enable_debug_packages %{nil}
+%define debug_package          %{nil}
+
 Summary:	DrakX installer images
 Name:		drakx-installer-images
 Version:	1.54
@@ -19,7 +22,7 @@ License:	GPLv2+
 Group:		Development/Other
 Url:		http://wiki.mandriva.com/Tools/DrakX
 BuildRequires:	%{kernels} kernel-firmware
-%ifarch %ix86 x86_64
+%ifarch %{ix86} x86_64
 BuildRequires:	memtest86+
 BuildRequires:	grub
 BuildRequires:	syslinux >= 3.72
