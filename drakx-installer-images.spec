@@ -16,7 +16,7 @@
 Summary:	DrakX installer images
 Name:		drakx-installer-images
 Version:	1.54
-Release:	1
+Release:	2
 Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		Development/Other
@@ -25,7 +25,7 @@ BuildRequires:	%{kernels} kernel-firmware
 %ifarch %{ix86} x86_64
 BuildRequires:	memtest86+
 BuildRequires:	grub
-BuildRequires:	syslinux >= 3.72
+BuildRequires:	syslinux >= 4.05-4
 %endif
 %ifarch ppc
 BuildRequires:	yaboot
