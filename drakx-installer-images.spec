@@ -11,11 +11,13 @@
 %endif
 
 %define _enable_debug_packages %{nil}
-%define debug_package          %{nil}
+%define debug_package %{nil}
+
+%define	family	drakx-installer
 
 Summary:	DrakX installer images
-Name:		drakx-installer-images
-Version:	1.55
+Name:		%{family}-images
+Version:	1.56
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
@@ -54,9 +56,12 @@ Images needed to build the Mandriva Linux installer (DrakX).
 THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
 
 %install
-dest=%{buildroot}%{_libdir}/%{name}
-mkdir -p $dest
-make -C images install ROOTDEST=$dest
+%makeinstall_std -C images
 
 %files
-%{_libdir}/%{name}
+%dir %{_libdir}/%{family}
+%dir %{_libdir}/%{family}/root
+%dir %{_libdir}/%{family}/root/install
+%{_libdir}/%{family}/root/install/*
+%dir %{_libdir}/%{family}/root/isolinux
+%{_libdir}/%{family}/root/isolinux/*
