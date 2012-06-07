@@ -18,7 +18,7 @@
 Summary:	DrakX installer images
 Name:		%{family}-images
 Version:	1.56
-Release:	1
+Release:	2
 Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		Development/Other
@@ -32,7 +32,7 @@ BuildRequires:	syslinux >= 4.05-4
 %ifarch ppc
 BuildRequires:	yaboot
 %endif
-BuildRequires:	drakx-installer-binaries >= 1.47
+BuildRequires:	drakx-installer-binaries >= 1.55
 BuildRequires:	ldetect-lst >= 0.1.291-2
 BuildRequires:	mandriva-theme-%{theme}
 BuildRequires:	pcmciautils
