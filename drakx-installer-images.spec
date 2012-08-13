@@ -17,7 +17,7 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	1.59
+Version:	1.61
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
