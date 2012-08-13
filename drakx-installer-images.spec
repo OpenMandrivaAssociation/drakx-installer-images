@@ -6,7 +6,7 @@
 %ifarch ppc
 %define kernels kernel-legacy
 %else
-%define kernels kernel-desktop kernel-server
+%define kernels kernel-desktop
 %endif
 %endif
 
@@ -17,7 +17,7 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	1.57
+Version:	1.59
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
