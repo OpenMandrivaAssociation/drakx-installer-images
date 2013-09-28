@@ -1,13 +1,13 @@
 %define	theme	Free
 
 %ifarch %{ix86}
-%define kernels kernel-desktop
+%define kernels kernel-nrjQL-laptop-3.10.12-1omv
 # kernel-generic
 %else
 %ifarch ppc
 %define kernels kernel-legacy
 %else
-%define kernels kernel-desktop
+%define kernels kernel-nrjQL-laptop-3.10.12-1omv
 %endif
 %endif
 
@@ -46,38 +46,44 @@ BuildRequires:	cdrkit-genisoimage
 BuildRequires:	mknod-m600
 BuildRequires:	mtools uclibc-dosfstools
 Buildrequires:	busybox
-Buildrequires:	ka-deploy-source-node
+#Buildrequires:	ka-deploy-source-node
 BuildRequires:	uclibc-pppoe uclibc-pppd
 BuildRequires:	zd1211-firmware
 
 
 #BuildRequires:	uclibc-mc
 # taken from drakx-installer-rescue
-BuildRequires:	squashfs-tools
+BuildRequires:	uclibc-squashfs-tools
 BuildRequires:	ldetect-lst-devel
-BuildRequires:	uclibc-hexedit grub rsync openssh-clients uclibc-ncftp strace
+BuildRequires:	uclibc-hexedit grub uclibc-rsync openssh-clients uclibc-ncftp uclibc-strace
 BuildRequires:	uclibc-gpart uclibc-parted uclibc-partimage uclibc-e2fsprogs
-BuildRequires:	uclibc-dump uclibc-xfsdump uclibc-testdisk extipl
+BuildRequires:	uclibc-dump uclibc-xfsdump uclibc-testdisk
 BuildRequires:	uclibc-xfsprogs uclibc-reiserfsprogs uclibc-jfsutils uclibc-btrfs-progs
-BuildRequires:	uclibc-mdadm uclibc-lvm2 uclibc-dmraid uclibc-kpartx uclibc-dmraid-events uclibc-dmsetup
+BuildRequires:	uclibc-lvm2 uclibc-dmraid uclibc-kpartx uclibc-dmraid-events uclibc-dmsetup
+BuildRequires:	uclibc-mdadm uclibc-sg3_utils uclibc-smartmontools
 BuildRequires:	tcpdump
 BuildRequires:	uclibc-mt-st
-Buildrequires:	krb5-appl-clients
 Buildrequires:	db52-utils
-BuildRequires:	packdrake rpmtools
+# include tools for generating metadata? yeah right..
+#BuildRequires:	packdrake rpmtools
 #BuildRequires:	drakx-installer-binaries drakxtools-backend drakx-kbd-mouse-x11
 BuildRequires:	bind-utils nfs-utils-clients
 BuildRequires:	uclibc-cdialog
 BuildRequires:	uclibc-ntfs-3g
-BuildRequires:	uclibc-cryptsetup uclibc-photorec quota
+BuildRequires:	uclibc-cryptsetup uclibc-photorec uclibc-quota
 BuildRequires:	uclibc-pv
-BuildRequires:	uclibc-dropbear screen
-BuildRequires:	nilfs-utils
+BuildRequires:	uclibc-dropbear uclibc-screen
+BuildRequires:	uclibc-dd_rescue
+BuildRequires:	uclibc-nilfs-utils
 BuildRequires:	uclibc-kmod
 BuildRequires:	perl(List::MoreUtils)
 BuildRequires:	grub2-theme
-BuildRequires:	fbset
 BuildRequires:	udhcpc
+# only needed for /etc/fb.modes
+BuildRequires:	fbset
+
+BuildRequires:	extipl
+
 
 %description
 Images needed to build the Mandriva Linux installer (DrakX).
@@ -86,8 +92,7 @@ Images needed to build the Mandriva Linux installer (DrakX).
 %setup -q
 
 %build
-THEME=Mandriva-%{theme} make -C images
-# KERNELS="%{kernels}"
+THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
 
 %install
 %makeinstall_std -C images
@@ -97,5 +102,7 @@ THEME=Mandriva-%{theme} make -C images
 %dir %{_libdir}/%{family}/root
 %dir %{_libdir}/%{family}/root/install
 %{_libdir}/%{family}/root/install/*
+%dir %{_libdir}/%{family}/root/grub
+%{_libdir}/%{family}/root/grub/*
 #%dir %{_libdir}/%{family}/root/isolinux
 #%{_libdir}/%{family}/root/isolinux/*
