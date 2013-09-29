@@ -55,6 +55,7 @@ Buildrequires:	busybox
 BuildRequires:	uclibc-pppoe uclibc-pppd
 BuildRequires:	zd1211-firmware
 BuildRequires:	prelink
+BuildRequires:	fonts-ttf-liberation
 
 
 #BuildRequires:	uclibc-mc
