@@ -45,6 +45,7 @@ BuildRequires:	drakx-kbd-mouse-x11
 
 BuildRequires:	cdrkit-genisoimage
 BuildRequires:	mknod-m600
+BuildRequires:	dosfstools
 BuildRequires:	mtools uclibc-dosfstools
 Buildrequires:	busybox
 #Buildrequires:	ka-deploy-source-node
@@ -56,7 +57,7 @@ BuildRequires:	zd1211-firmware
 # taken from drakx-installer-rescue
 BuildRequires:	uclibc-squashfs-tools
 BuildRequires:	ldetect-lst-devel
-BuildRequires:	uclibc-hexedit grub uclibc-rsync openssh-clients uclibc-ncftp uclibc-strace
+BuildRequires:	uclibc-hexedit grub2 uclibc-rsync openssh-clients uclibc-ncftp uclibc-strace
 BuildRequires:	uclibc-gpart uclibc-parted uclibc-partimage uclibc-e2fsprogs
 BuildRequires:	uclibc-dump uclibc-xfsdump uclibc-testdisk
 BuildRequires:	uclibc-xfsprogs uclibc-reiserfsprogs uclibc-jfsutils uclibc-btrfs-progs
