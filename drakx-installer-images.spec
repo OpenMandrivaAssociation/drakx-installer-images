@@ -54,6 +54,7 @@ Buildrequires:	busybox
 #Buildrequires:	ka-deploy-source-node
 BuildRequires:	uclibc-pppoe uclibc-pppd
 BuildRequires:	zd1211-firmware
+BuildRequires:	prelink
 
 
 #BuildRequires:	uclibc-mc
