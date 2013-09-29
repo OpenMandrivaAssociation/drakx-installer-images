@@ -37,7 +37,7 @@ BuildRequires:	syslinux >= 4.05-4
 %ifarch ppc
 BuildRequires:	yaboot
 %endif
-#BuildRequires:	drakx-installer-binaries >= 2.0
+BuildRequires:	drakx-installer-binaries >= 2.0
 BuildRequires:	ldetect-lst >= 0.1.291-2
 BuildRequires:	mandriva-theme-%{theme}
 BuildRequires:	pcmciautils
