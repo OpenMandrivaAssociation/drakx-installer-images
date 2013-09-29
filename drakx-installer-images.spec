@@ -42,7 +42,7 @@ BuildRequires:	mandriva-theme-%{theme}
 BuildRequires:	pcmciautils
 BuildRequires:	perl-XML-Parser
 BuildRequires:	drakx-kbd-mouse-x11
-BuildRequires:	packdrake termcap gpm lvm2 dmraid-events pciuils setserial smartmontools linux_logo
+BuildRequires:	packdrake termcap gpm lvm2 dmraid-events pciutils setserial smartmontools linux_logo
 BuildRequires:	krb5-appl-clients
 
 BuildRequires:	cdrkit-genisoimage
