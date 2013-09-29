@@ -1,13 +1,13 @@
 %define	theme	Free
 
 %ifarch %{ix86}
-%define kernels kernel-nrjQL-laptop-3.10.12-1omv
+%define kernels kernel-nrjQL-laptop-3.10.13-1omv
 # kernel-generic
 %else
 %ifarch ppc
 %define kernels kernel-legacy
 %else
-%define kernels kernel-nrjQL-laptop-3.10.12-1omv
+%define kernels kernel-nrjQL-laptop-3.10.13-1omv
 %endif
 %endif
 
