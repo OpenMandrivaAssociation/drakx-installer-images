@@ -41,6 +41,7 @@ BuildRequires:	ldetect-lst >= 0.1.291-2
 BuildRequires:	mandriva-theme-%{theme}
 BuildRequires:	pcmciautils
 BuildRequires:	perl-XML-Parser
+BuildRequires:	drakx-kbd-mouse-x11
 
 BuildRequires:	cdrkit-genisoimage
 BuildRequires:	mknod-m600
