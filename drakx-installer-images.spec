@@ -1,13 +1,15 @@
 %define	theme	Free
 
+%if "%{kernels}" == "%%{kernels}"
 %ifarch %{ix86}
-%define kernels kernel-nrjQL-desktop-latest
+%global kernels kernel-nrjQL-desktop-latest
 # kernel-generic
 %else
 %ifarch ppc
-%define kernels kernel-legacy
+%global kernels kernel-legacy
 %else
-%define kernels kernel-nrjQL-desktop-latest
+%global kernels kernel-nrjQL-desktop-latest
+%endif
 %endif
 %endif
 
