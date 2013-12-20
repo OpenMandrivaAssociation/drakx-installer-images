@@ -1,13 +1,13 @@
 %define	theme	Free
 
 %ifarch %{ix86}
-%define kernels kernel-nrjQL-laptop-3.10.13-1omv
+%define kernels kernel-nrjQL-desktop-latest
 # kernel-generic
 %else
 %ifarch ppc
 %define kernels kernel-legacy
 %else
-%define kernels kernel-nrjQL-laptop-3.10.13-1omv
+%define kernels kernel-nrjQL-desktop-latest
 %endif
 %endif
 
@@ -18,8 +18,8 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.0
-Release:	2
+Version:	2.2
+Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 License:	GPLv2+
