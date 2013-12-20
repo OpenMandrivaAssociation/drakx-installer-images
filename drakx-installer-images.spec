@@ -80,7 +80,7 @@ BuildRequires:	uclibc-ntfs-3g
 BuildRequires:	uclibc-cryptsetup uclibc-photorec uclibc-quota
 BuildRequires:	uclibc-pv
 BuildRequires:	uclibc-dropbear uclibc-screen
-BuildRequires:	uclibc-dd_rescue
+BuildRequires:	uclibc-dd-rescue
 BuildRequires:	uclibc-nilfs-utils
 BuildRequires:	uclibc-kmod
 BuildRequires:	perl(List::MoreUtils)
