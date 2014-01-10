@@ -1,13 +1,13 @@
 %define	theme	Free
 
 %ifarch %{ix86}
-%define kernels kernel-nrjQL-desktop-3.11.8-1omv
+%define kernels kernel-nrjQL-desktop-3.12.6-1omv
 # kernel-generic
 %else
 %ifarch ppc
 %define kernels kernel-legacy
 %else
-%define kernels kernel-nrjQL-desktop-3.11.8-1omv
+%define kernels kernel-nrjQL-desktop-3.12.6-1omv
 %endif
 %endif
 
