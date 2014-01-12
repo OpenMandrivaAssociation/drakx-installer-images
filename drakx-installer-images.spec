@@ -18,7 +18,7 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.2
+Version:	2.3
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
@@ -85,6 +85,7 @@ BuildRequires:	uclibc-dropbear uclibc-screen
 BuildRequires:	uclibc-ddrescue
 BuildRequires:	uclibc-nilfs-utils
 BuildRequires:	uclibc-kmod
+BuildRequires:	uclibc-hdparm
 BuildRequires:	perl(List::MoreUtils)
 BuildRequires:	grub2-theme
 BuildRequires:	udhcpc
