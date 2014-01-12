@@ -1,15 +1,17 @@
 %define	theme	Free
 
 %ifarch %{ix86}
-%define kernels kernel-nrjQL-desktop-3.12.6-1omv
+%define kernels kernel-nrjQL-desktop-latest
 # kernel-generic
 %else
 %ifarch ppc
 %define kernels kernel-legacy
 %else
-%define kernels kernel-nrjQL-desktop-3.12.6-1omv
+%define kernels kernel-nrjQL-desktop-latest
 %endif
 %endif
+
+%define	kernel	%(rpm -q --qf '%{REQUIRENAME}\n' kernel-nrjQL-desktop-latest)
 
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
@@ -102,7 +104,7 @@ Images needed to build the Mandriva Linux installer (DrakX).
 %setup -q
 
 %build
-THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
+THEME=Mandriva-%{theme} make -C images KERNELS="%{kernel}"
 
 %install
 %makeinstall_std -C images
