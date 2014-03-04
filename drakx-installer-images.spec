@@ -13,6 +13,8 @@
 %endif
 %endif
 
+%define	kernel	%(rpm -q --qf '%{REQUIRENAME}\n' kernel-nrjQL-desktop-latest)
+
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
@@ -20,7 +22,7 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.2
+Version:	2.3
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
@@ -31,6 +33,9 @@ Url:		http://wiki.mandriva.com/Tools/DrakX
 %rename		%{family}-rescue
 
 BuildRequires:	%{kernels} kernel-firmware
+BuildRequires:	zd1211-firmware
+BuildRequires:	atmel-firmware isicom-firmware
+BuildRequires:	iwlwifi-agn-ucode
 %ifarch %{ix86} x86_64
 BuildRequires:	memtest86+
 BuildRequires:	grub
@@ -45,7 +50,7 @@ BuildRequires:	mandriva-theme-%{theme}
 BuildRequires:	pcmciautils
 BuildRequires:	perl-XML-Parser
 BuildRequires:	drakx-kbd-mouse-x11
-BuildRequires:	packdrake termcap gpm lvm2 dmraid-events pciutils setserial smartmontools linux_logo
+BuildRequires:	termcap gpm lvm2 dmraid-events pciutils setserial smartmontools linux_logo
 BuildRequires:	krb5-appl-clients
 
 BuildRequires:	cdrkit-genisoimage
@@ -55,7 +60,6 @@ BuildRequires:	mtools uclibc-dosfstools
 Buildrequires:	busybox
 #Buildrequires:	ka-deploy-source-node
 BuildRequires:	uclibc-pppoe uclibc-pppd
-BuildRequires:	zd1211-firmware
 BuildRequires:	prelink
 BuildRequires:	fonts-ttf-liberation
 
@@ -85,6 +89,7 @@ BuildRequires:	uclibc-dropbear uclibc-screen
 BuildRequires:	uclibc-ddrescue
 BuildRequires:	uclibc-nilfs-utils
 BuildRequires:	uclibc-kmod
+BuildRequires:	uclibc-hdparm
 BuildRequires:	perl(List::MoreUtils)
 BuildRequires:	grub2-theme
 BuildRequires:	udhcpc
@@ -101,7 +106,7 @@ Images needed to build the Mandriva Linux installer (DrakX).
 %setup -q
 
 %build
-THEME=Mandriva-%{theme} make -C images KERNELS="%{kernels}"
+THEME=Mandriva-%{theme} make -C images KERNELS="%{kernel}"
 
 %install
 %makeinstall_std -C images
