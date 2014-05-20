@@ -113,7 +113,8 @@ THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |
 %dir %{_libdir}/%{family}
 %dir %{_libdir}/%{family}/root
 %dir %{_libdir}/%{family}/root/install
-%{_libdir}/%{family}/root/install/*
+%dir %{_libdir}/%{family}/root/install/images/
+%{_libdir}/%{family}/root/install/images/all.cpio.xz
 %dir %{_libdir}/%{family}/root/grub
 %{_libdir}/%{family}/root/grub/*
 #%dir %{_libdir}/%{family}/root/isolinux
