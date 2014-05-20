@@ -1,4 +1,4 @@
-%define	theme	Free
+%define	theme	Moondrake
 
 %if "%{kernels}" == "%%{kernels}"
 %ifarch %{ix86}
@@ -22,7 +22,7 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.3
+Version:	2.5
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
@@ -44,7 +44,6 @@ BuildRequires:	syslinux >= 4.05-4
 %ifarch ppc
 BuildRequires:	yaboot
 %endif
-BuildRequires:	drakx-installer-binaries >= 2.3-2
 BuildRequires:	ldetect-lst >= 0.1.291-2
 BuildRequires:	mandriva-theme-%{theme}
 BuildRequires:	pcmciautils
@@ -66,7 +65,7 @@ BuildRequires:	fonts-ttf-liberation
 
 #BuildRequires:	uclibc-mc
 # taken from drakx-installer-rescue
-BuildRequires:	uclibc-squashfs-tools
+BuildRequires:	uclibc-squashfs-tools uclibc-udev
 BuildRequires:	ldetect-lst-devel
 BuildRequires:	uclibc-hexedit grub2 uclibc-rsync openssh-clients uclibc-ncftp uclibc-strace
 BuildRequires:	uclibc-gpart uclibc-parted uclibc-partimage uclibc-e2fsprogs
@@ -75,12 +74,11 @@ BuildRequires:	uclibc-xfsprogs uclibc-reiserfsprogs uclibc-jfsutils uclibc-btrfs
 BuildRequires:	uclibc-lvm2 uclibc-dmraid uclibc-kpartx uclibc-dmraid-events uclibc-dmsetup
 BuildRequires:	uclibc-mdadm uclibc-sg3_utils uclibc-smartmontools
 BuildRequires:	tcpdump
-BuildRequires:	uclibc-mt-st
-Buildrequires:	db52-utils
+BuildRequires:	uclibc-mt-st uclibc-file uclibc-ncurses
+Buildrequires:	uclibc-db52-utils
 # include tools for generating metadata? yeah right..
 #BuildRequires:	packdrake rpmtools
-#BuildRequires:	drakx-installer-binaries drakxtools-backend drakx-kbd-mouse-x11
-BuildRequires:	bind-utils nfs-utils-clients
+BuildRequires:	drakx-installer-binaries #drakxtools-backend drakx-kbd-mouse-x11
 BuildRequires:	uclibc-cdialog
 BuildRequires:	uclibc-ntfs-3g
 BuildRequires:	uclibc-cryptsetup uclibc-photorec uclibc-quota
@@ -89,10 +87,10 @@ BuildRequires:	uclibc-dropbear uclibc-screen
 BuildRequires:	uclibc-ddrescue
 BuildRequires:	uclibc-nilfs-utils
 BuildRequires:	uclibc-kmod
-BuildRequires:	uclibc-hdparm
+BuildRequires:	uclibc-hdparm uclibc-dmidecode
 BuildRequires:	perl(List::MoreUtils)
 BuildRequires:	grub2-theme
-BuildRequires:	udhcpc
+BuildRequires:	uclibc-udhcp
 # only needed for /etc/fb.modes
 BuildRequires:	fbset
 
@@ -106,7 +104,7 @@ Images needed to build the Mandriva Linux installer (DrakX).
 %setup -q
 
 %build
-THEME=Mandriva-%{theme} make -C images KERNELS="%{kernel}"
+THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |grep kernel)"
 
 %install
 %makeinstall_std -C images
