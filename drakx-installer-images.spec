@@ -114,8 +114,28 @@ THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |
 %dir %{_libdir}/%{family}/root
 %dir %{_libdir}/%{family}/root/install
 %dir %{_libdir}/%{family}/root/install/images/
-%{_libdir}/%{family}/root/install/images/all.cpio.xz
+%{_libdir}/%{family}/root/install/images/MD5SUM
+%{_libdir}/%{family}/root/install/images/boot.iso
+%{_libdir}/%{family}/root/install/images/hd_grub.img
 %dir %{_libdir}/%{family}/root/grub
-%{_libdir}/%{family}/root/grub/*
+%{_libdir}/%{family}/root/grub/VERSION
+%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/
+%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/install
+%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/install/images
+%{_libdir}/%{family}/root/grub/%{_target_cpu}/install/images/all.cpio.xz
+%dir %{_libdir}/%{family}/root/grub/boot/
+%{_libdir}/%{family}/root/grub/boot/firmware.cpio.xz
+%{_libdir}/%{family}/root/grub/boot/memtest.bin
+%dir %{_libdir}/%{family}/root/grub/boot/alt?
+%dir %{_libdir}/%{family}/root/grub/boot/alt?/*
+%{_libdir}/%{family}/root/grub/boot/alt?/*/modules.cpio.xz
+%{_libdir}/%{family}/root/grub/boot/alt?/*/vmlinuz
+%dir %{_libdir}/%{family}/root/grub/boot/grub
+%{_libdir}/%{family}/root/grub/boot/grub/grub.cfg
+%dir %{_libdir}/%{family}/root/grub/boot/grub/fonts
+%{_libdir}/%{family}/root/grub/boot/grub/fonts/*
+%dir %{_libdir}/%{family}/root/grub/boot/grub/themes
+%dir %{_libdir}/%{family}/root/grub/boot/grub/themes/Moondrake
+%{_libdir}/%{family}/root/grub/boot/grub/themes/Moondrake/*
 #%dir %{_libdir}/%{family}/root/isolinux
 #%{_libdir}/%{family}/root/isolinux/*
