@@ -95,7 +95,8 @@ BuildRequires:	uclibc-udhcp
 BuildRequires:	fbset
 
 BuildRequires:	extipl
-BuildConflicts:	distro-theme-OpenMandriva distro-release-OpenMandriva distro-theme-OpenMandriva-grub2
+#BuildConflicts:	distro-release-OpenMandriva
+BuildConflicts:	distro-theme-OpenMandriva distro-theme-OpenMandriva-grub2
 BuildRequires:	distro-theme-Moondrake distro-release-Moondrake distro-theme-Moondrake-grub2
 
 
