@@ -23,7 +23,7 @@
 Summary:	DrakX installer images
 Name:		%{family}-images
 Version:	2.6
-Release:	1
+Release:	2
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 License:	GPLv2+
@@ -95,6 +95,8 @@ BuildRequires:	uclibc-udhcp
 BuildRequires:	fbset
 
 BuildRequires:	extipl
+BuildConflicts:	distro-theme-OpenMandriva distro-release-OpenMandriva distro-theme-OpenMandriva-grub2
+BuildRequires:	distro-theme-Moondrake distro-release-Moondrake distro-theme-Moondrake-grub2
 
 
 %description
