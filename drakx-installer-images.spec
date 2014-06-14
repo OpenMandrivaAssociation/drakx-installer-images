@@ -60,7 +60,6 @@ Buildrequires:	busybox
 #Buildrequires:	ka-deploy-source-node
 BuildRequires:	uclibc-pppoe uclibc-pppd
 BuildRequires:	prelink
-BuildRequires:	fonts-ttf-liberation
 
 
 #BuildRequires:	uclibc-mc
@@ -139,8 +138,6 @@ THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |
 %{_libdir}/%{family}/root/grub/boot/alt?/*/vmlinuz
 %dir %{_libdir}/%{family}/root/grub/boot/grub
 %{_libdir}/%{family}/root/grub/boot/grub/grub.cfg
-%dir %{_libdir}/%{family}/root/grub/boot/grub/fonts
-%{_libdir}/%{family}/root/grub/boot/grub/fonts/*
 %dir %{_libdir}/%{family}/root/grub/boot/grub/themes
 %dir %{_libdir}/%{family}/root/grub/boot/grub/themes/Moondrake
 %{_libdir}/%{family}/root/grub/boot/grub/themes/Moondrake/*
