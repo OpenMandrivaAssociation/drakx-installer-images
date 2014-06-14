@@ -105,6 +105,10 @@ Images needed to build the Mandriva Linux installer (DrakX).
 
 %prep
 %setup -q
+# workaround multiple threads consuming all of 32 bit address space
+%ifarch %{ix86}
+find -type f |xargs sed -e 's#xz -T0#xz#g' -i
+%endif
 
 %build
 THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |grep kernel)"
