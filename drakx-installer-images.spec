@@ -22,8 +22,8 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.6
-Release:	3
+Version:	2.7
+Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 License:	GPLv2+
