@@ -1,0 +1,146 @@
+#! /bin/sh
+set -e
+
+# grub-mkconfig helper script.
+# Copyright (C) 2011  Michal Ambroz <rebus@seznam.cz>
+#
+# you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with the script.  If not, see <http://www.gnu.org/licenses/>.
+
+prefix=/usr
+exec_prefix=/usr
+bindir=/usr/bin
+grublibdir=/usr/share/grub
+. ${grublibdir}/grub-mkconfig_lib
+
+export TEXTDOMAIN=grub
+export TEXTDOMAINDIR=${prefix}/share/locale
+
+CLASS=""
+
+OS="Moondrake ucDrakx"
+
+# loop-AES arranges things so that /dev/loop/X can be our root device, but
+# the initrds that Linux uses don't like that.
+case ${GRUB_DEVICE} in
+  /dev/loop/*|/dev/loop[0-9])
+    GRUB_DEVICE=`losetup ${GRUB_DEVICE} | sed -e "s/^[^(]*(\([^)]\+\)).*/\1/"`
+  ;;
+esac
+
+if [ "x${GRUB_DEVICE_UUID}" = "x" ] || [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ] \
+    || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" \
+    || uses_abstraction "${GRUB_DEVICE}" lvm; then
+  LINUX_ROOT_DEVICE=${GRUB_DEVICE}
+else
+  LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
+fi
+
+if [ "x`${grub_probe} --device ${GRUB_DEVICE} --target=fs 2>/dev/null || true`" = xbtrfs ]; then
+  rootsubvol="`make_system_path_relative_to_its_root /`"
+  rootsubvol="${rootsubvol#/}"
+  if [ "x${rootsubvol}" != x ]; then
+    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
+  fi
+fi
+
+ucdrakx_entry ()
+{
+  os="$1"
+  ucdrakx_version="$2"
+  linux_version="$3"
+  args="$4"
+  title="$(gettext_quoted "%s %s")"
+  printf "menuentry '${title}' {\n" "${os}" "${version}"
+
+
+  if [ x$dirname = x/ ]; then
+    if [ -z "${prepare_root_cache}" ]; then
+      prepare_root_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE} | sed -e "s/^/\t/")"
+    fi
+    printf '%s\n' "${prepare_root_cache}"
+  else
+    if [ -z "${prepare_boot_cache}" ]; then
+      prepare_boot_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | sed -e "s/^/\t/")"
+    fi
+    printf '%s\n' "${prepare_boot_cache}"
+  fi
+  linux_msg="$(gettext_printf "Loading %s %s ..." Linux "${linux_version}")"
+  ucdrakx_msg="$(gettext_printf "Loading %s %s ..." "${os}" "${ucdrakx_version}") environment"
+  cat << EOF
+	load_video
+	set gfxpayload=keep
+	echo	'$linux_msg'
+	linux	${rel_dirname_linux}/${basename_linux} rescue $args
+	echo	'$ucdrakx_msg'
+	initrd	${rel_dirname_modules}/${basename_modules} ${rel_dirname_firmware}/${basename_firmware} ${rel_dirname_ucdrakx}/${basename_ucdrakx}
+}
+EOF
+}
+
+case x`uname -m` in
+    xx86_64)
+	linux=`for i in /usr/lib64/drakx-installer/root/grub/boot/alt0/64/vmlinuz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	modules=`for i in /usr/lib64/drakx-installer/root/grub/boot/alt0/64/modules.cpio.xz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	firmware=`for i in /usr/lib64/drakx-installer/root/grub/boot/firmware.cpio.xz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	ucdrakx=`for i in /usr/lib64/drakx-installer/root/grub/x86_64/install/images/all.cpio.xz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	      ;;
+      xi?86)
+	linux=`for i in /usr/lib/drakx-installer/root/grub/boot/alt0/32/vmlinuz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	modules=`for i in /usr/lib/drakx-installer/root/grub/boot/alt0/32/modules.cpio.xz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	firmware=`for i in /usr/lib/drakx-installer/root/grub/boot/firmware.cpio.xz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	ucdrakx=`for i in /usr/lib/drakx-installer/root/grub/i586/install/images/all.cpio.xz ; do
+                  if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+              done`
+	      ;;
+esac
+
+prepare_boot_cache=
+prepare_root_cache=
+
+#linux=`version_find_latest $list`
+echo "Found ucDrakx image: $linux" >&2
+basename_linux=`basename $linux`
+dirname_linux=`dirname $linux`
+rel_dirname_linux=`make_system_path_relative_to_its_root $dirname_linux`
+basename_modules=`basename $modules`
+dirname_modules=`dirname $modules`
+rel_dirname_modules=`make_system_path_relative_to_its_root $dirname_modules`
+basename_firmware=`basename $firmware`
+dirname_firmware=`dirname $firmware`
+rel_dirname_firmware=`make_system_path_relative_to_its_root $dirname_firmware`
+basename_ucdrakx=`basename $ucdrakx`
+dirname_ucdrakx=`dirname $ucdrakx`
+rel_dirname_ucdrakx=`make_system_path_relative_to_its_root $dirname_ucdrakx`
+ucdrakx_version="`rpm -qf $ucdrakx --qf '%{VERSION}'`"
+linux_version="`file $linux | sed -e 's#.*version \(\w.*\)\s\(.*\)).*#\1#g'`"
+linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+
+. /etc/vconsole.conf
+
+
+ucdrakx_entry "${OS}" "${ucdrakx_version}" "${linux_version}" vconsole.keymap="${KEYMAP}"

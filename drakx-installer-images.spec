@@ -26,6 +26,7 @@ Version:	2.10
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
+Source2:	20_ucdrakx
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://wiki.mandriva.com/Tools/DrakX
@@ -114,6 +115,7 @@ THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |
 
 %install
 %makeinstall_std -C images
+install -m755 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/grub.d/20_ucdrakx
 
 %files
 %dir %{_libdir}/%{family}
@@ -143,3 +145,5 @@ THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |
 %{_libdir}/%{family}/root/grub/boot/grub/themes/Moondrake/*
 #%dir %{_libdir}/%{family}/root/isolinux
 #%{_libdir}/%{family}/root/isolinux/*
+
+%{_sysconfdir}/grub.d/20_ucdrakx
