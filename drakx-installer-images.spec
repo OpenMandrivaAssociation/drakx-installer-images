@@ -35,6 +35,7 @@ Url:		http://wiki.mandriva.com/Tools/DrakX
 
 Requires:	ucDrakx = %{EVRD}
 
+BuildRequires:	gnucpio
 BuildRequires:	%{kernels} kernel-firmware
 BuildRequires:	zd1211-firmware
 BuildRequires:	atmel-firmware isicom-firmware
