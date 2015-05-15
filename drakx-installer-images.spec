@@ -22,8 +22,8 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.10
-Release:	1
+Version:	2.16
+Release:	2
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 Source2:	20_ucdrakx
@@ -32,6 +32,8 @@ Group:		Development/Other
 Url:		http://wiki.mandriva.com/Tools/DrakX
 
 %rename		%{family}-rescue
+
+Requires:	ucDrakx = %{EVRD}
 
 BuildRequires:	%{kernels} kernel-firmware
 BuildRequires:	zd1211-firmware
@@ -103,6 +105,24 @@ BuildRequires:	distro-theme-Moondrake distro-release-Moondrake distro-theme-Moon
 %description
 Images needed to build the Mandriva Linux installer (DrakX).
 
+%package -n	ucDrakx
+Summary: 	Size optimized, minimal distro environment that may be used for diagnostics
+Group:		System/Configuration/Boot and Init
+Conflicts:	%{name} < 2.16-2
+
+%description -n	ucDrakx
+uClibc linked minimal distribution environment, size optimized & including all
+tools provided by busybox, as well as several other commonly useful tool, such
+as disk rescue, diagnostic tools, etcetc. for it to serve as a full fledged
+rescue and general multipurpose environment at a minimal size.
+ucDrakx is used as first stage loader for the DrakX installer, as well as a
+independent diagnostic environment (with more features, being better
+preconfigured according to your own environment, far smaller and less bloated
+than dracut's rescue environment).
+ucDrakx in addition to the ability to be booted as an independent environment,
+can also be used together with dracut, in order to provide a much more
+powerful, smaller and multipurpose environment as a fall back during boot.
+
 %prep
 %setup -q
 # workaround multiple threads consuming all of 32 bit address space
@@ -127,17 +147,8 @@ install -m755 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/grub.d/20_ucdrakx
 %{_libdir}/%{family}/root/install/images/hd_grub.img
 %dir %{_libdir}/%{family}/root/grub
 %{_libdir}/%{family}/root/grub/VERSION
-%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/
-%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/install
-%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/install/images
-%{_libdir}/%{family}/root/grub/%{_target_cpu}/install/images/all.cpio.xz
 %dir %{_libdir}/%{family}/root/grub/boot/
-%{_libdir}/%{family}/root/grub/boot/firmware.cpio.xz
-%{_libdir}/%{family}/root/grub/boot/memtest.bin
-%dir %{_libdir}/%{family}/root/grub/boot/alt?
-%dir %{_libdir}/%{family}/root/grub/boot/alt?/*
-%{_libdir}/%{family}/root/grub/boot/alt?/*/modules.cpio.xz
-%{_libdir}/%{family}/root/grub/boot/alt?/*/vmlinuz
+%{_libdir}/%{family}/root/grub/boot/memtest
 %dir %{_libdir}/%{family}/root/grub/boot/grub
 %{_libdir}/%{family}/root/grub/boot/grub/grub.cfg
 %dir %{_libdir}/%{family}/root/grub/boot/grub/themes
@@ -146,4 +157,17 @@ install -m755 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/grub.d/20_ucdrakx
 #%dir %{_libdir}/%{family}/root/isolinux
 #%{_libdir}/%{family}/root/isolinux/*
 
+%files -n ucDrakx
+%dir %{_libdir}/%{family}/root
+%dir %{_libdir}/%{family}/root/grub
+%dir %{_libdir}/%{family}/root/grub/boot/
+%dir %{_libdir}/%{family}/root/grub/boot/alt?
+%dir %{_libdir}/%{family}/root/grub/boot/alt?/*
+%{_libdir}/%{family}/root/grub/boot/alt?/*/modules.cpio.xz
+%{_libdir}/%{family}/root/grub/boot/alt?/*/vmlinuz
+%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/
+%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/install
+%dir %{_libdir}/%{family}/root/grub/%{_target_cpu}/install/images
+%{_libdir}/%{family}/root/grub/%{_target_cpu}/install/images/all.cpio.xz
+%{_libdir}/%{family}/root/grub/boot/firmware.cpio.xz
 %{_sysconfdir}/grub.d/20_ucdrakx
