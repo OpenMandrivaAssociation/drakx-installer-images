@@ -98,7 +98,7 @@ BuildRequires:	fbset
 
 BuildRequires:	extipl
 #BuildConflicts:	distro-release-OpenMandriva
-BuildConflicts:	distro-theme-OpenMandriva distro-theme-OpenMandriva-grub2
+#BuildConflicts:	distro-theme-OpenMandriva distro-theme-OpenMandriva-grub2
 BuildRequires:	distro-theme-Moondrake distro-release-Moondrake distro-theme-Moondrake-grub2
 
 
