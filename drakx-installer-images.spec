@@ -138,6 +138,12 @@ THEME=Mandriva-%{theme} make -C images KERNELS="$(rpm -q --requires %{kernels} |
 %makeinstall_std -C images
 install -m755 %{SOURCE2} -D %{buildroot}%{_sysconfdir}/grub.d/20_ucdrakx
 
+# a file trigger should prolly' perhaps be added for %{_sysconfdir}/grub.d/ in stead..
+%post -n ucDrakx
+if [ -e /boot/grub2/grub.cfg ]; then
+	/usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
+fi
+
 %files
 %dir %{_libdir}/%{family}
 %dir %{_libdir}/%{family}/root
