@@ -56,7 +56,7 @@ BuildRequires:	drakx-kbd-mouse-x11
 BuildRequires:	termcap gpm lvm2 dmraid-events pciutils setserial smartmontools linux_logo
 BuildRequires:	krb5-appl-clients
 
-BuildRequires:	cdrkit-genisoimage
+BuildRequires:	xorriso
 BuildRequires:	mknod-m600
 BuildRequires:	dosfstools
 BuildRequires:	mtools uclibc-dosfstools
