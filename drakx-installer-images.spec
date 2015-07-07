@@ -22,8 +22,8 @@
 
 Summary:	DrakX installer images
 Name:		%{family}-images
-Version:	2.16
-Release:	2
+Version:	2.16.1
+Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 Source2:	20_ucdrakx
