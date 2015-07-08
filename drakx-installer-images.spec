@@ -56,7 +56,9 @@ BuildRequires:	drakx-kbd-mouse-x11
 BuildRequires:	termcap gpm lvm2 dmraid-events pciutils setserial smartmontools linux_logo
 BuildRequires:	krb5-appl-clients
 
-BuildRequires:	xorriso
+# xorriso-1.4.0-1 were broken by the introduction of -Ofast to compiler flags
+# by packager doing the release
+BuildRequires:	xorriso >= 1.4.0-2
 BuildRequires:	mknod-m600
 BuildRequires:	dosfstools
 BuildRequires:	mtools uclibc-dosfstools
