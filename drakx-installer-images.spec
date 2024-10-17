@@ -29,7 +29,7 @@ Source1:	%{name}.rpmlintrc
 Source2:	20_ucdrakx
 License:	GPLv2+
 Group:		Development/Other
-Url:		http://wiki.mandriva.com/Tools/DrakX
+Url:		https://wiki.mandriva.com/Tools/DrakX
 
 %rename		%{family}-rescue
 
